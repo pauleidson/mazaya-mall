@@ -55,15 +55,11 @@ The repository is organized logically, separating the page content from its stat
 ├── 📄 404.html                 # Custom "Page Not Found" error page
 │
 └─── 📁 static/                 # Directory for all static assets
-     ├── 📁 fonts/               # (Contains .ttf and .otf font files)
-     │   ├── 📜 ArbFONTS-*.ttf
-     │   └── 📜 JUST Sans-*.otf
-     │
-     ├── 📁 images/             # (Contains all visual assets)
-     │   ├── 🖼️ hero-background.webp
-     │   ├── 🖼️ logo.svg
-     │   └── 🖼️ ... (favicons, etc.)
-     │
+     ├── 📜 ArbFONTS-*.ttf
+     ├── 📜 JUST Sans-*.otf
+     ├── 🖼️ hero-background.webp
+     ├── 🖼️ logo.svg
+     ├── 🖼️ ... (favicons, etc.)
      └── 📄 site.webmanifest    # PWA configuration file
 ```
 
@@ -113,5 +109,6 @@ The landing page features a critical lead-generation form that integrates with a
     *   **On Submit:** "Sending..." (with a loading spinner)
     *   **On Success:** "Sent Successfully!" (form clears, button turns green)
     *   **On Error:** "Submission Failed" (button turns red)
+
 
 
