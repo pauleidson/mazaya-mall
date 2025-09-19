@@ -13,6 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="Mazaya" />
+	<link rel="manifest" href="/static/site.webmanifest" />
+	
     <style>
         /* BEST PRACTICES FIX: Corrected font paths */
         @font-face {
@@ -182,7 +190,8 @@
         
         .section-header .subtitle {
             font-size: 1rem;
-            color: var(--secondary);
+            /* ACCESSIBILITY FIX: Changed color from var(--secondary) to a darker shade for sufficient contrast. */
+            color: #997944;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
