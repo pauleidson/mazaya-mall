@@ -7,12 +7,18 @@
     <meta name="description" content="اكتشف مول مزايا في قلب مدينة السادات. فرص استثمارية استثنائية بوحدات تجارية، إدارية، وسكنية. أنظمة سداد مرنة وعائد استثماري مضمون.">
     <!-- BEST PRACTICES FIX: Added a basic Content-Security-Policy meta tag. Server-side headers are still recommended. -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
-    
+	
     <title>مول مزايا | مزايا كابيتال</title>
+    <!-- Preconnect to the domains that serve the fonts to speed up the connection -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 
+	<!-- Load the Google Fonts CSS asynchronously so it doesn't block rendering. The URL includes `&display=swap` -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+
+	<!-- Provide a fallback for users with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap"></noscript>
+	
 	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
 	<link rel="shortcut icon" href="/static/favicon.ico" />
@@ -27,30 +33,35 @@
             src: url('/static/ArbFONTS-BritishCouncil-Arabic-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
+			font-display: swap;
         }
         @font-face {
             font-family: 'ArabicFont';
             src: url('/static/ArbFONTS-BritishCouncil-Arabic-Bold.ttf') format('truetype');
             font-weight: 700;
             font-style: normal;
+			font-display: swap;
         }
         @font-face {
             font-family: 'ArabicFont';
             src: url('/static/ArbFONTS-BritishCouncil-Arabic-Light.ttf') format('truetype');
             font-weight: 300;
             font-style: normal;
+			font-display: swap;
         }
         @font-face {
             font-family: 'EnglishFont';
             src: url('/static/JUST Sans Regular.otf') format('opentype');
             font-weight: 400;
             font-style: normal;
+			font-display: swap;
         }
         @font-face {
             font-family: 'EnglishFont';
             src: url('/static/JUST Sans ExBold.otf') format('opentype');
             font-weight: 700;
             font-style: normal;
+			font-display: swap;
         }
 
 		@keyframes spin {
