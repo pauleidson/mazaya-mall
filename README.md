@@ -77,7 +77,7 @@ This project requires no build tools or compilation steps.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://your-repository-url.com/mazaya-mall.git
+    git clone https://github.com/Ali-Mahmoud-Abdalluh/mazaya-mall.git
     ```
 
 2.  **Navigate to the project directory:**
@@ -113,4 +113,5 @@ The landing page features a critical lead-generation form that integrates with a
     *   **On Submit:** "Sending..." (with a loading spinner)
     *   **On Success:** "Sent Successfully!" (form clears, button turns green)
     *   **On Error:** "Submission Failed" (button turns red)
+
 
