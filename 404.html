@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الصفحة التي تبحث عنها غير موجودة في موقع مول مزايا.">
+    
+    <title>404 - الصفحة غير موجودة | مول مزايا</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* All styles from your main site are included here for consistency */
+        @font-face {
+            font-family: 'ArabicFont';
+            src: url('/static/ArbFONTS-BritishCouncil-Arabic-Regular.ttf') format('truetype');
+            font-weight: 400; font-style: normal;
+        }
+        @font-face {
+            font-family: 'ArabicFont';
+            src: url('/static/ArbFONTS-BritishCouncil-Arabic-Bold.ttf') format('truetype');
+            font-weight: 700; font-style: normal;
+        }
+        @font-face {
+            font-family: 'EnglishFont';
+            src: url('/static/JUST Sans Regular.otf') format('opentype');
+            font-weight: 400; font-style: normal;
+        }
+        @font-face {
+            font-family: 'EnglishFont';
+            src: url('/static/JUST Sans ExBold.otf') format('opentype');
+            font-weight: 700; font-style: normal;
+        }
+        
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c9a763;
+            --light: #fdfcf9;
+            --bg-dark: #111111;
+            --text-light: #f0f0f0;
+            --text-dark: #333333;
+            --text-muted: #777;
+            --border-color: rgba(201, 167, 99, 0.2);
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --fast-transition: all 0.3s ease;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'ArabicFont', 'Almarai', sans-serif;
+            background: var(--light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            transition: var(--fast-transition);
+        }
+        
+        body.lang-en {
+            font-family: 'EnglishFont', 'Almarai', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'ArabicFont', 'Cormorant Garamond', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+        
+        body.lang-en h1, body.lang-en h2, body.lang-en h3, body.lang-en h4 {
+            font-family: 'EnglishFont', 'Cormorant Garamond', serif;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        /* Button Styles */
+        .btn-primary {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: 0 8px 20px rgba(201, 167, 99, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus-visible {
+            background: #d4b273;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(201, 167, 99, 0.4);
+            color: var(--bg-dark);
+        }
+        
+        /* Header & Navigation Styles (copied for consistency) */
+        #header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(253, 252, 249, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { width: 150px; }
+        .main-nav { display: none; } /* Hide main nav on 404 page for simplicity */
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .lang-switch {
+            color: var(--text-dark);
+            background: rgba(201, 167, 99, 0.1);
+            border: 1px solid rgba(201, 167, 99, 0.3);
+            font-size: 1rem; cursor: pointer; padding: 0.7rem 1.2rem;
+            border-radius: 25px; font-weight: 700; transition: var(--transition);
+        }
+        .lang-switch:hover { background: var(--secondary); color: var(--primary); }
+        .mobile-toggle { display: none; }
+
+        /* Footer Styles (copied for consistency) */
+        footer {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1f1f1f 100%);
+            color: var(--text-light); padding: 6rem 0 3rem; text-align: center;
+        }
+        .footer-logo { font-size: 3rem; font-weight: 700; color: var(--light); text-decoration: none; }
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 3rem; color: rgba(255,255,255,0.5); font-size: 1rem;
+        }
+        
+        /* Language Toggle Styles */
+        .en { display: none; }
+        body.lang-en .en { display: inline; }
+        body.lang-en .ar { display: none; }
+        
+        /* Custom 404 Page Styles */
+        #error-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 8rem 1.5rem 4rem; /* Added padding to account for fixed header */
+            background: var(--light);
+        }
+        .error-container {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .error-container .error-code {
+            font-family: 'EnglishFont', 'Cormorant Garamond', serif;
+            font-size: 10rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-shadow: 0 8px 30px rgba(201, 167, 99, 0.3);
+            line-height: 1;
+            margin-bottom: 1rem;
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .error-container .error-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .error-container .error-description {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .error-container .btn-primary {
+            font-size: 1.2rem;
+            padding: 1.2rem 3.5rem;
+        }
+
+        /* Responsive adjustments for 404 page */
+        @media (max-width: 768px) {
+            .error-container .error-code { font-size: 8rem; }
+            .error-container .error-title { font-size: 2rem; }
+            .error-container .error-description { font-size: 1.1rem; }
+        }
+        @media (max-width: 480px) {
+            #error-page { padding-left: 1rem; padding-right: 1rem; }
+            .error-container .error-code { font-size: 6rem; }
+            .error-container .error-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body class="lang-ar">
+    
+    <header id="header">
+        <div class="container header-container">
+            <a href="/" class="logo" aria-label="Mazaya Mall Homepage">
+		        <img src="/static/logo.svg" width="140" style="object-fit:cover" alt="Mazaya Capital Logo">
+	        </a>
+            <div class="header-actions">
+                <button class="lang-switch" id="langSwitch" aria-label="Switch Language">
+                    <span class="ar">EN</span><span class="en">عربي</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="error-page">
+            <div class="error-container">
+                <h1 class="error-code">404</h1>
+                <h2 class="error-title">
+                    <span class="ar">الصفحة غير موجودة</span>
+                    <span class="en">Page Not Found</span>
+                </h2>
+                <p class="error-description">
+                    <span class="ar">عفواً، الصفحة التي تبحث عنها غير موجودة. ربما تم حذفها، أو تم تغيير اسمها، أو أنها غير متاحة مؤقتاً.</span>
+                    <span class="en">Oops! The page you're looking for doesn't exist. It might have been removed, had its name changed, or is temporarily unavailable.</span>
+                </p>
+                <a href="/" class="btn-primary">
+                    <span class="ar">العودة إلى الصفحة الرئيسية</span>
+                    <span class="en">Go to Homepage</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+             <div class="copyright">
+                <p>&copy; 2025 <span class="ar">مزايا كابيتال. جميع الحقوق محفوظة.</span><span class="en">Mazaya Capital. All Rights Reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language Switching Functionality
+            const langSwitch = document.getElementById('langSwitch');
+            let currentLang = 'ar';
+            
+            function setLanguage(lang) {
+                document.body.style.opacity = '0.8';
+                setTimeout(() => {
+                    document.body.classList.remove('lang-ar', 'lang-en');
+                    document.body.classList.add(`lang-${lang}`);
+                    document.documentElement.setAttribute('lang', lang);
+                    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                    currentLang = lang;
+                    document.title = lang === 'ar' ? '404 - الصفحة غير موجودة | مول مزايا' : '404 - Page Not Found | Mazaya Mall';
+                    document.body.style.opacity = '1';
+                }, 150);
+            }
+            
+            langSwitch.addEventListener('click', (e) => {
+                e.preventDefault();
+                setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+            });
+        });
+    </script>
+</body>
+</html>
