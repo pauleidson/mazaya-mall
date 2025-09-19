@@ -1,18 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO FIX: Added meta description -->
+    <meta name="description" content="اكتشف مول مزايا في قلب مدينة السادات. فرص استثمارية استثنائية بوحدات تجارية، إدارية، وسكنية. أنظمة سداد مرنة وعائد استثماري مضمون.">
+    <!-- BEST PRACTICES FIX: Added a basic Content-Security-Policy meta tag. Server-side headers are still recommended. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
+    
     <title>مول مزايا | مزايا كابيتال</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* BEST PRACTICES FIX: Corrected font paths */
         @font-face {
             font-family: 'ArabicFont';
-            src: url('ArbFONTS-BritishCouncil-Arabic-Regular.ttf') format('truetype');
+            src: url('/static/ArbFONTS-BritishCouncil-Arabic-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
         }
@@ -945,7 +950,8 @@
             color: #d4b273;
         }
         
-        .contact-info-item h4 {
+        /* ACCESSIBILITY FIX: Changed from h4 to h3 */
+        .contact-info-item h3 {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
@@ -1380,7 +1386,7 @@
                 gap: 1rem;
             }
             
-            .contact-info-item h4 {
+            .contact-info-item h3 { /* ACCESSIBILITY FIX */
                 font-size: 1.2rem;
             }
             
@@ -1453,9 +1459,11 @@
 <body class="lang-ar">
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">
-		<img src="/static/logo.svg" width="140" style="object-fit:cover">
-	    </a>
+            <!-- ACCESSIBILITY FIX: Added aria-label -->
+            <a href="#" class="logo" aria-label="Mazaya Mall Homepage">
+                <!-- ACCESSIBILITY/SEO FIX: Added alt attribute -->
+		        <img src="/static/logo.svg" width="140" style="object-fit:cover" alt="Mazaya Capital Logo">
+	        </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#hero" class="active"><span class="ar">الرئيسية</span><span class="en">Home</span></a></li>
@@ -1652,14 +1660,16 @@
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <h4><span class="ar">موقع المشروع</span><span class="en">Project Location</span></h4>
+                                <!-- ACCESSIBILITY FIX: Changed from h4 to h3 -->
+                                <h3><span class="ar">موقع المشروع</span><span class="en">Project Location</span></h3>
                                 <p><span class="ar">المحور المركزي، قلب مدينة السادات، محافظة المنوفية، جمهورية مصر العربية</span><span class="en">Central Axis, Heart of Sadat City, Menoufia Governorate, Egypt</span></p>
                             </div>
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-phone-volume"></i>
                             <div>
-                                <h4><span class="ar">أرقام التواصل</span><span class="en">Contact Numbers</span></h4>
+                                <!-- ACCESSIBILITY FIX: Changed from h4 to h3 -->
+                                <h3><span class="ar">أرقام التواصل</span><span class="en">Contact Numbers</span></h3>
                                 <p>
                                     <a href="tel:01055050058" dir="ltr">01055050058</a><br>
                                     <a href="tel:01116050333" dir="ltr">01116050333</a>
@@ -1669,14 +1679,16 @@
                         <div class="contact-info-item">
                              <i class="fas fa-globe"></i>
                             <div>
-                                <h4><span class="ar">الموقع الإلكتروني</span><span class="en">Official Website</span></h4>
+                                <!-- ACCESSIBILITY FIX: Changed from h4 to h3 -->
+                                <h3><span class="ar">الموقع الإلكتروني</span><span class="en">Official Website</span></h3>
                                 <a href="http://mazayacapital.com" target="_blank" rel="noopener">mazayacapital.com</a>
                             </div>
                         </div>
                         <div class="contact-info-item">
                             <i class="fas fa-clock"></i>
                             <div>
-                                <h4><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></h4>
+                                <!-- ACCESSIBILITY FIX: Changed from h4 to h3 -->
+                                <h3><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></h3>
                                 <p><span class="ar">يومياً من 9 صباحاً - 8 مساءً</span><span class="en">Daily 9:00 AM - 8:00 PM</span></p>
                             </div>
                         </div>
@@ -1807,11 +1819,12 @@
             function toggleMobileMenu(show) {
                 if (show) {
                     mobileMenu.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    // Temporarily disable page scroll, but keep overflow-x hidden on body
+                    document.body.style.overflowY = 'hidden';
                     mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
                 } else {
                     mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
+                    document.body.style.overflowY = '';
                     mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             }
@@ -1908,7 +1921,6 @@
                 const email = document.getElementById('email').value;
 
                 // --- 2. SET 'last_comment' FIELD ---
-                // Since the specific fields were removed, we send a static message.
                 const lastComment = "Lead from website form.";
                 
                 // --- 3. CREATE JSON PAYLOAD ---
@@ -1934,20 +1946,18 @@
                     // --- 5. DEBUG AND HANDLE THE RESPONSE ---
                     console.log('Request Payload:', payload);
                     console.log('Raw Response Status:', response.status);
-                    console.log('Raw Response Status Text:', response.statusText);
-                    const responseData = await response.json();
+                    const responseData = await response.json().catch(() => ({})); // Handle cases where response is not JSON
                     console.log('CRM API Response Data:', responseData);
 
                     if (!response.ok) {
-                        // If response status is not 2xx, throw an error to be caught below
-                        throw new Error(`Server responded with ${response.status}: ${responseData.message || 'Unknown error'}`);
+                        throw new Error(`Server responded with ${response.status}: ${responseData.message || response.statusText}`);
                     }
 
                     // --- SUCCESS ---
                     submitBtn.innerHTML = currentLang === 'ar' ? 
                         'تم الإرسال بنجاح! <i class="fas fa-check"></i>' : 
                         'Sent Successfully! <i class="fas fa-check"></i>';
-                    submitBtn.style.background = '#28a745'; // Green for success
+                    submitBtn.style.background = '#28a745';
                     submitBtn.style.transform = 'scale(1)';
                     
                     setTimeout(() => {
@@ -1960,7 +1970,7 @@
                     submitBtn.innerHTML = currentLang === 'ar' ?
                         'فشل الإرسال <i class="fas fa-times"></i>' :
                         'Submission Failed <i class="fas fa-times"></i>';
-                    submitBtn.style.background = '#dc3545'; // Red for error
+                    submitBtn.style.background = '#dc3545';
                     submitBtn.style.transform = 'scale(1)';
 
                 } finally {
@@ -1968,7 +1978,7 @@
                     setTimeout(() => {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalButtonHTML;
-                        submitBtn.style.background = ''; // Revert to original color
+                        submitBtn.style.background = '';
                     }, 3000);
                 }
             });
@@ -1992,7 +2002,7 @@
                 card.style.transform = 'translateY(30px)';
             });
 
-            // Subtle parallax effect for hero content only (not the entire section)
+            // Subtle parallax effect for hero content only
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
                 const heroContent = document.querySelector('.hero-content');
