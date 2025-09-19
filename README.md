@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://mall.mazayacapital.com/static/logo.svg" alt="Mazaya Mall Logo" width="200"/>
+  <img src="https://mall.mazayacapital.com/static/logo.svg" alt="Mazaya Mall Logo" width="200" style="--webkit-filter:drop-shadow(5 5 15 #ffffff);filter:drop-shadow(5 5 15 #ffffff);"/>
 
   # **Mazaya Mall - Promotional Landing Page**
 
@@ -113,3 +113,4 @@ The landing page features a critical lead-generation form that integrates with a
     *   **On Submit:** "Sending..." (with a loading spinner)
     *   **On Success:** "Sent Successfully!" (form clears, button turns green)
     *   **On Error:** "Submission Failed" (button turns red)
+
