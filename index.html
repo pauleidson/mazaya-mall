@@ -987,7 +987,7 @@
             color: var(--primary);
         }
         
-        .form-group input, .form-group textarea, .custom-select {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 1.2rem 1.5rem;
             border: 2px solid #e0e0e0;
@@ -995,80 +995,6 @@
             font-size: 1.1rem;
             transition: var(--transition);
             background: #fafafa;
-        }
-        
-        .custom-select {
-            position: relative;
-            cursor: pointer;
-            padding: 0;
-        }
-        
-        .select-selected {
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fafafa;
-            border-radius: 12px;
-            transition: var(--transition);
-            border: 2px solid #e0e0e0;
-        }
-        
-        .select-selected i {
-            transition: transform 0.3s ease;
-            color: var(--secondary);
-        }
-        
-        .custom-select.active .select-selected i {
-            transform: rotate(180deg);
-        }
-        
-        .custom-select.active .select-selected {
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 4px rgba(201, 167, 99, 0.2);
-            background: #ffffff;
-        }
-        
-        .select-items {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            
-            border-top: none;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            z-index: 1000;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .custom-select.active .select-items {
-            max-height: 350px;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .select-items div {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .select-items div:last-child {
-            border-bottom: none;
-        }
-        
-        .select-items div:hover {
-            background: rgba(201, 167, 99, 0.1);
-            color: var(--secondary);
-        }
-        
-        .select-items div.selected {
-            background: var(--secondary);
-            color: var(--primary);
         }
         
         .form-group input:focus, .form-group textarea:focus {
@@ -1768,43 +1694,6 @@
                                 <label for="email"><span class="ar">البريد الإلكتروني</span><span class="en">Email Address</span></label>
                                 <input type="email" id="email" name="email" placeholder="example@email.com" dir="ltr">
                             </div>
-                            <div class="form-group">
-                                <label for="unitType"><span class="ar">نوع الوحدة المهتم بها</span><span class="en">Unit Type of Interest</span></label>
-                                <div class="custom-select" id="customSelect">
-                                    <div class="select-selected">
-                                        <span class="ar">اختر نوع الوحدة</span>
-                                        <span class="en">Select Unit Type</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="select-items">
-                                        <div data-value="commercial-ground">
-                                            <span class="ar">تجاري أرضي</span>
-                                            <span class="en">Commercial Ground</span>
-                                        </div>
-                                        <div data-value="commercial-2nd">
-                                            <span class="ar">تجاري ثاني</span>
-                                            <span class="en">Commercial 2nd Floor</span>
-                                        </div>
-                                        <div data-value="administrative">
-                                            <span class="ar">إداري</span>
-                                            <span class="en">Administrative</span>
-                                        </div>
-                                        <div data-value="medical">
-                                            <span class="ar">طبي</span>
-                                            <span class="en">Medical</span>
-                                        </div>
-                                        <div data-value="residential">
-                                            <span class="ar">سكني</span>
-                                            <span class="en">Residential</span>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="unitType" name="unitType" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message"><span class="ar">رسالتك أو استفسارك *</span><span class="en">Your Message or Inquiry *</span></label>
-                                <textarea id="message" name="message" required placeholder="اكتب رسالتك أو استفسارك هنا... / Write your message or inquiry here..."></textarea>
-                            </div>
                             <button type="submit" class="btn-primary submit-btn">
                                 <span class="ar">إرسال الرسالة</span><span class="en">Send Message</span>
                                 <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
@@ -1995,37 +1884,94 @@
             
             sections.forEach(section => observer.observe(section));
 
-            // Enhanced Form Handling
+            // === START: MODIFIED FORM HANDLING CODE ===
             const contactForm = document.getElementById('contactForm');
             const submitBtn = contactForm.querySelector('.submit-btn');
             
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Animate button
+                // Get original button text
+                const originalButtonHTML = submitBtn.innerHTML;
+
+                // Animate button and show loading state
+                submitBtn.disabled = true;
                 submitBtn.style.transform = 'scale(0.95)';
                 submitBtn.innerHTML = currentLang === 'ar' ? 
                     'جاري الإرسال... <i class="fas fa-spinner fa-spin"></i>' : 
                     'Sending... <i class="fas fa-spinner fa-spin"></i>';
+
+                // --- 1. GATHER FORM DATA ---
+                const fullName = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+
+                // --- 2. SET 'last_comment' FIELD ---
+                // Since the specific fields were removed, we send a static message.
+                const lastComment = "Lead from website form.";
                 
-                // Simulate form submission
-                setTimeout(() => {
+                // --- 3. CREATE JSON PAYLOAD ---
+                const payload = {
+                    full_name: fullName,
+                    mobile: phone,
+                    email: email,
+                    last_comment: lastComment
+                };
+
+                // --- 4. MAKE THE POST REQUEST ---
+                const crmUrl = 'https://api.engazcrm.net/webhook/integration/mazayacapital/4/8/1';
+                
+                try {
+                    const response = await fetch(crmUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // --- 5. DEBUG AND HANDLE THE RESPONSE ---
+                    console.log('Request Payload:', payload);
+                    console.log('Raw Response Status:', response.status);
+                    console.log('Raw Response Status Text:', response.statusText);
+                    const responseData = await response.json();
+                    console.log('CRM API Response Data:', responseData);
+
+                    if (!response.ok) {
+                        // If response status is not 2xx, throw an error to be caught below
+                        throw new Error(`Server responded with ${response.status}: ${responseData.message || 'Unknown error'}`);
+                    }
+
+                    // --- SUCCESS ---
                     submitBtn.innerHTML = currentLang === 'ar' ? 
                         'تم الإرسال بنجاح! <i class="fas fa-check"></i>' : 
                         'Sent Successfully! <i class="fas fa-check"></i>';
-                    submitBtn.style.background = '#28a745';
+                    submitBtn.style.background = '#28a745'; // Green for success
                     submitBtn.style.transform = 'scale(1)';
                     
-                    // Reset form
                     setTimeout(() => {
                         contactForm.reset();
-                        submitBtn.innerHTML = currentLang === 'ar' ? 
-                            'إرسال الرسالة <i class="fas fa-paper-plane"></i>' : 
-                            'Send Message <i class="fas fa-paper-plane"></i>';
-                        submitBtn.style.background = '';
-                    }, 2000);
-                }, 1500);
+                    }, 1000);
+
+                } catch (error) {
+                    // --- ERROR ---
+                    console.error('Submission failed:', error);
+                    submitBtn.innerHTML = currentLang === 'ar' ?
+                        'فشل الإرسال <i class="fas fa-times"></i>' :
+                        'Submission Failed <i class="fas fa-times"></i>';
+                    submitBtn.style.background = '#dc3545'; // Red for error
+                    submitBtn.style.transform = 'scale(1)';
+
+                } finally {
+                    // --- RESET BUTTON AFTER 3 SECONDS (REGARDLESS OF SUCCESS/FAILURE) ---
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalButtonHTML;
+                        submitBtn.style.background = ''; // Revert to original color
+                    }, 3000);
+                }
             });
+            // === END: MODIFIED FORM HANDLING CODE ===
 
             // Enhanced Card Interactions
             const cards = document.querySelectorAll('.feature-card, .offer-card, .area-card, .price-card');
@@ -2066,51 +2012,6 @@
                     this.style.color = 'rgba(255,255,255,0.7)';
                     this.style.transform = 'scale(1) rotate(0deg)';
                 });
-            });
-
-            // Custom Dropdown Functionality
-            const customSelect = document.getElementById('customSelect');
-            const selectSelected = customSelect.querySelector('.select-selected');
-            const selectItems = customSelect.querySelector('.select-items');
-            const hiddenInput = customSelect.querySelector('#unitType');
-            
-            selectSelected.addEventListener('click', function(e) {
-                e.stopPropagation();
-                customSelect.classList.toggle('active');
-            });
-            
-            selectItems.addEventListener('click', function(e) {
-                if (e.target.hasAttribute('data-value')) {
-                    // Remove previous selection
-                    selectItems.querySelectorAll('div').forEach(item => {
-                        item.classList.remove('selected');
-                    });
-                    
-                    // Add selection to clicked item
-                    e.target.classList.add('selected');
-                    
-                    // Update hidden input value
-                    hiddenInput.value = e.target.getAttribute('data-value');
-                    
-                    // Update selected text (only show current language)
-                    const selectedText = e.target.innerHTML;
-                    selectSelected.innerHTML = selectedText + ' <i class="fas fa-chevron-down"></i>';
-                    
-                    // Close dropdown
-                    customSelect.classList.remove('active');
-                }
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function() {
-                customSelect.classList.remove('active');
-            });
-
-            // Keyboard navigation support
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && customSelect.classList.contains('active')) {
-                    customSelect.classList.remove('active');
-                }
             });
 
             // Loading animation
